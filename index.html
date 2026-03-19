@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shanmukh · tailwind portfolio</title>
+  <!-- Tailwind via CDN + basic inter font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- custom smooth scroll & glass backdrop (tiny supplement) -->
+  <style>
+    html { scroll-behavior: smooth; }
+    /* subtle backdrop for nav (tailwind doesn't have backdrop-blur by default in cdn? it does! we'll use it) */
+    .glass-nav {
+      background: rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    }
+    /* gradient text hero */
+    .gradient-name {
+      background: linear-gradient(to right, #f0f9ff, #7dd3fc, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    /* skill pill hover effect (fine tuning) */
+    .skill-pill {
+      transition: all 0.2s;
+    }
+    .skill-pill:hover {
+      background: #38bdf8;
+      color: #0f172a;
+      font-weight: 600;
+    }
+    /* profile image - no border, only shadow */
+    .profile-img {
+      box-shadow: 0 25px 40px -12px #0a2b4a;
+      transition: transform 0.3s ease;
+    }
+    .profile-img:hover {
+      transform: scale(1.02);
+    }
+    /* cv button style */
+    .cv-button {
+      transition: all 0.2s;
+    }
+    .cv-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-[#0b1120] text-[#e2e8f0] antialiased">
+
+<!-- ========== GLASS NAV ========== -->
+<nav class="glass-nav fixed w-full z-50 flex justify-between items-center px-[8%] py-4">
+  <h2 class="text-3xl font-semibold bg-gradient-to-r from-[#38bdf8] to-[#818cf8] bg-clip-text text-transparent">⚡ Shanmukh</h2>
+  <ul class="flex gap-1 md:gap-3 flex-wrap justify-end text-sm">
+    <li onclick="go('about')" class="cursor-pointer px-3 py-1.5 rounded-full hover:bg-[#1e2b45] hover:text-[#38bdf8] transition"><i class="fas fa-user mr-1"></i>About</li>
+    <li onclick="go('skills')" class="cursor-pointer px-3 py-1.5 rounded-full hover:bg-[#1e2b45] hover:text-[#38bdf8] transition"><i class="fas fa-code mr-1"></i>Skills</li>
+    <li onclick="go('projects')" class="cursor-pointer px-3 py-1.5 rounded-full hover:bg-[#1e2b45] hover:text-[#38bdf8] transition"><i class="fas fa-project-diagram mr-1"></i>Projects</li>
+    <li onclick="go('training')" class="cursor-pointer px-3 py-1.5 rounded-full hover:bg-[#1e2b45] hover:text-[#38bdf8] transition"><i class="fas fa-laptop-code mr-1"></i>Training</li>
+    <li onclick="go('certifications')" class="cursor-pointer px-3 py-1.5 rounded-full hover:bg-[#1e2b45] hover:text-[#38bdf8] transition"><i class="fas fa-certificate mr-1"></i>Certs</li>
+    <li onclick="go('achievements')" class="cursor-pointer px-3 py-1.5 rounded-full hover:bg-[#1e2b45] hover:text-[#38bdf8] transition"><i class="fas fa-trophy mr-1"></i>Achieve</li>
+    <li onclick="go('education')" class="cursor-pointer px-3 py-1.5 rounded-full hover:bg-[#1e2b45] hover:text-[#38bdf8] transition"><i class="fas fa-graduation-cap mr-1"></i>Education</li>
+    <li onclick="go('contact')" class="cursor-pointer px-3 py-1.5 rounded-full hover:bg-[#1e2b45] hover:text-[#38bdf8] transition"><i class="fas fa-envelope mr-1"></i>Contact</li>
+    <!-- Download CV Button in Nav -->
+    <li>
+      <a href="cv.pdf" download="Shanmukh_CV.pdf" class="inline-block px-4 py-1.5 bg-gradient-to-r from-[#38bdf8] to-[#2563eb] text-[#0f172a] font-semibold rounded-full hover:scale-105 transition border border-white/10 cv-button">
+        <i class="fas fa-download mr-1"></i>CV
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ========== HERO (image on right, no border) ========== -->
+<section class="min-h-screen flex items-center px-[8%] pt-24 pb-16 bg-[radial-gradient(circle_at_30%_40%,rgba(56,189,248,0.1),transparent_50%)]">
+  <div class="flex flex-col lg:flex-row items-center justify-between w-full gap-10">
+    <!-- left text -->
+    <div class="flex-1 text-center lg:text-left">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+        <span class="gradient-name">Hi, I'm</span> <span class="text-[#38bdf8]">Shanmukh</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-[#94a3b8] max-w-xl mt-6 mx-auto lg:mx-0">Data Scientist · Developer · Problem Solver</p>
+      <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
+        <button onclick="go('projects')" class="px-8 py-3 bg-gradient-to-br from-[#38bdf8] to-[#2563eb] text-[#0f172a] font-semibold rounded-full shadow-lg hover:scale-105 transition border border-white/10">✨ View my work</button>
+        <!-- Download CV Button in Hero -->
+        <a href="cv.pdf" download="Shanmukh_CV.pdf" class="px-8 py-3 bg-transparent border-2 border-[#38bdf8] text-[#38bdf8] font-semibold rounded-full hover:bg-[#38bdf8] hover:text-[#0f172a] transition cv-button">
+          <i class="fas fa-download mr-2"></i>Download CV
+        </a>
+      </div>
+    </div>
+    <!-- right image: no border, only shadow -->
+    <div class="flex-none">
+  <img 
+  src="pic.png" 
+  alt="Shanmukh" 
+  style="width: 400px; height: 400px;"
+  class="rounded-full object-cover shadow-2xl"
+  onerror="this.onerror=null; this.src='fallback.svg';">
+</div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="px-[8%] py-20 scroll-mt-20">
+  <h2 class="text-4xl font-bold mb-8 border-l-8 border-[#38bdf8] pl-4 bg-gradient-to-r from-white to-[#94a3b8] bg-clip-text text-transparent">🧑‍💻 About</h2>
+  <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-8 rounded-3xl border border-[#38bdf8]/10 shadow-2xl hover:border-[#38bdf8] transition text-lg">
+    <p>I'm Jogu Shanmukha Sesha Sai — a passionate Computer Science student at LPU. I build data dashboards, system-level tools & web apps using C++, Java, Python, JavaScript. My focus is solving real‑world problems with clean, scalable solutions. Always curious, always building.</p>
+  </div>
+</section>
+
+<!-- ========== SKILLS ========== -->
+<section id="skills" class="px-[8%] py-20 scroll-mt-20 bg-[#0b1120]/50">
+  <h2 class="text-4xl font-bold mb-8 border-l-8 border-[#38bdf8] pl-4 bg-gradient-to-r from-white to-[#94a3b8] bg-clip-text text-transparent">⚙️ Skills</h2>
+  
+  <h3 class="text-2xl text-[#cbd5e1] mt-4 mb-3">Languages</h3>
+  <div class="flex flex-wrap gap-3 mb-8">
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">C++</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">Java</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">Python</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">C</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">SQL</span>
+  </div>
+
+  <h3 class="text-2xl text-[#cbd5e1] mt-6 mb-3">Frontend & Frameworks</h3>
+  <div class="flex flex-wrap gap-3 mb-8">
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">HTML5</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">CSS3</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">JavaScript (ES6)</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">React (basic)</span>
+  </div>
+
+  <h3 class="text-2xl text-[#cbd5e1] mt-6 mb-3">Tools & platforms</h3>
+  <div class="flex flex-wrap gap-3 mb-8">
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">MS Excel (expert)</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">Power BI</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">Git</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">Linux</span>
+  </div>
+
+  <h3 class="text-2xl text-[#cbd5e1] mt-6 mb-3">Soft skills</h3>
+  <div class="flex flex-wrap gap-3">
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">🧠 Problem solving</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">🤝 Team player</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">⚡ Adaptability</span>
+    <span class="skill-pill px-5 py-2 rounded-full border border-[#38bdf8] bg-[#38bdf8]/20 text-[#e0f2fe]">💬 Communication</span>
+  </div>
+</section>
+
+<!-- ========== PROJECTS ========== -->
+<section id="projects" class="px-[8%] py-20 scroll-mt-20">
+  <h2 class="text-4xl font-bold mb-8 border-l-8 border-[#38bdf8] pl-4 bg-gradient-to-r from-white to-[#94a3b8] bg-clip-text text-transparent">📌 Projects</h2>
+  <div class="grid gap-6 md:grid-cols-2">
+    <!-- card 1 -->
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl hover:border-[#38bdf8] transition">
+      <h3 class="text-2xl text-[#38bdf8] font-semibold">📱 Mobile Review System (Power BI)</h3>
+      <p class="text-[#b0c4de] mt-2"><i class="far fa-calendar text-[#38bdf8] mr-2"></i>Nov 2025 – Dec 2025</p>
+      <p class="mt-2">Interactive dashboard built with Power Query & DAX for analyzing mobile phone reviews — dynamic filters, sentiment trends, brand comparison.</p>
+    </div>
+    <!-- card 2 -->
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl hover:border-[#38bdf8] transition">
+      <h3 class="text-2xl text-[#38bdf8] font-semibold">🌱 Surya Seeds Dashboard</h3>
+      <p class="text-[#b0c4de] mt-2"><i class="far fa-calendar text-[#38bdf8] mr-2"></i>Feb 2025</p>
+      <p class="mt-2">Excel-based stock tracker using advanced PivotTables, KPIs, and Power Query — reduced manual work by 40%.</p>
+    </div>
+    <!-- card 3 -->
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl hover:border-[#38bdf8] transition">
+      <h3 class="text-2xl text-[#38bdf8] font-semibold">⏰ Alarm Clock (C++)</h3>
+      <p class="text-[#b0c4de] mt-2"><i class="far fa-calendar text-[#38bdf8] mr-2"></i>June 2025</p>
+      <p class="mt-2">Multi‑threaded CLI alarm system using STL, std::thread, and mutex locks — reliable, concurrent alarm scheduler.</p>
+    </div>
+    <!-- card 4 -->
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl hover:border-[#38bdf8] transition">
+      <h3 class="text-2xl text-[#38bdf8] font-semibold">🌐 GravityOrg Website</h3>
+      <p class="text-[#b0c4de] mt-2"><i class="far fa-calendar text-[#38bdf8] mr-2"></i>Mar 2024 – Jul 2024</p>
+      <p class="mt-2">Official website for university club — responsive, modern grid layout, event showcase. <br> <a href="https://gravityorg.xyz" target="_blank" class="text-[#38bdf8] border-b border-dotted">gravityorg.xyz <i class="fas fa-external-link-alt text-sm"></i></a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRAINING ========== -->
+<section id="training" class="px-[8%] py-20 scroll-mt-20 bg-[#0b1120]/50">
+  <h2 class="text-4xl font-bold mb-8 border-l-8 border-[#38bdf8] pl-4 bg-gradient-to-r from-white to-[#94a3b8] bg-clip-text text-transparent">📚 Training</h2>
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl">
+      <h3 class="text-2xl text-[#38bdf8]">DSA using C++ (LPU)</h3>
+      <p class="text-[#b0c4de]"><i class="far fa-calendar text-[#38bdf8] mr-2"></i>June 2025 – July 2025</p>
+      <p>Deep dive into linked lists, stacks, queues, trees, STL containers & algorithms.</p>
+      <p class="mt-2 font-medium">Project: Text Undo Editor (using doubly linked list & stack).</p>
+    </div>
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl">
+      <h3 class="text-2xl text-[#38bdf8]">Power BI & Data Analytics</h3>
+      <p>Self‑paced — built 3 dashboards, mastered DAX, Power Query, M‑language basics.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CERTIFICATIONS & ACHIEVEMENTS (side by side) ========== -->
+<section id="certifications" class="px-[8%] py-20 scroll-mt-20">
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- left certs -->
+    <div>
+      <h2 class="text-4xl font-bold mb-6 border-l-8 border-[#38bdf8] pl-4 bg-gradient-to-r from-white to-[#94a3b8] bg-clip-text text-transparent">📜 Certifications</h2>
+      <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl">
+        <p class="py-2 border-b border-dashed border-[#334155] flex items-center gap-3"><i class="fas fa-check-circle text-[#38bdf8]"></i>Java Programming - LPU</p>
+        <p class="py-2 border-b border-dashed border-[#334155] flex items-center gap-3"><i class="fas fa-check-circle text-[#38bdf8]"></i>Object Oriented Programming - LPU</p>
+        <p class="py-2 border-b border-dashed border-[#334155] flex items-center gap-3"><i class="fas fa-check-circle text-[#38bdf8]"></i>Data Structures & Algorithms - LPU</p>
+        <p class="py-2 border-b border-dashed border-[#334155] flex items-center gap-3"><i class="fas fa-check-circle text-[#38bdf8]"></i>Fundamentals of Computing - Coursera</p>
+        <p class="py-2 border-b border-dashed border-[#334155] flex items-center gap-3"><i class="fas fa-check-circle text-[#38bdf8]"></i>Computer Networking - Coursera</p>
+        <p class="py-2 flex items-center gap-3"><i class="fas fa-check-circle text-[#38bdf8]"></i>Introduction to Hardware - Coursera</p>
+      </div>
+    </div>
+    <!-- right achievements -->
+    <div id="achievements">
+      <h2 class="text-4xl font-bold mb-6 border-l-8 border-[#38bdf8] pl-4 bg-gradient-to-r from-white to-[#94a3b8] bg-clip-text text-transparent">🏆 Achievements</h2>
+      <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl">
+        <p class="py-2 border-b border-dashed border-[#334155] flex items-center gap-3"><i class="fas fa-trophy text-[#38bdf8]"></i>Solved 150+ problems on LeetCode & GFG</p>
+        <p class="py-2 border-b border-dashed border-[#334155] flex items-center gap-3"><i class="fas fa-trophy text-[#38bdf8]"></i>HR Department - Student Organization (LPU)</p>
+        <p class="py-2 border-b border-dashed border-[#334155] flex items-center gap-3"><i class="fas fa-trophy text-[#38bdf8]"></i>Content Writer - Gravity Club</p>
+        <p class="py-2 flex items-center gap-3"><i class="fas fa-trophy text-[#38bdf8]"></i>3rd Rank - Ramanujan Science Olympiad</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EDUCATION ========== -->
+<section id="education" class="px-[8%] py-20 scroll-mt-20 bg-[#0b1120]/50">
+  <h2 class="text-4xl font-bold mb-8 border-l-8 border-[#38bdf8] pl-4 bg-gradient-to-r from-white to-[#94a3b8] bg-clip-text text-transparent">🎓 Education</h2>
+  <div class="grid gap-6 md:grid-cols-3">
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl">
+      <h3 class="text-2xl text-[#38bdf8]">B.Tech CSE · LPU</h3>
+      <p>CGPA: 6.08 (2023 – Present)</p>
+    </div>
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl">
+      <h3 class="text-2xl text-[#38bdf8]">Intermediate (93%) · Sri Chaitanya</h3>
+      <p>2021 – 2023</p>
+    </div>
+    <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-6 rounded-3xl border border-[#38bdf8]/10 shadow-2xl">
+      <h3 class="text-2xl text-[#38bdf8]">School (90%) · Auxilium</h3>
+      <p>2020 – 2021</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="px-[8%] py-20 scroll-mt-20">
+  <h2 class="text-4xl font-bold mb-8 border-l-8 border-[#38bdf8] pl-4 bg-gradient-to-r from-white to-[#94a3b8] bg-clip-text text-transparent">📫 Contact</h2>
+  <div class="bg-gradient-to-br from-[#1e293b] to-[#172032] p-8 rounded-3xl border border-[#38bdf8] shadow-2xl max-w-2xl">
+    <p class="text-xl flex items-center gap-4"><i class="fas fa-envelope text-[#38bdf8] w-8 text-2xl"></i> shanmukhjogu@gmail.com</p>
+    <p class="text-xl flex items-center gap-4 mt-3"><i class="fas fa-phone-alt text-[#38bdf8] w-8 text-2xl"></i> +91 96186 99679</p>
+    <p class="text-xl flex flex-wrap items-center gap-6 mt-3">
+      <span class="flex items-center gap-2"><i class="fab fa-github text-[#38bdf8] text-2xl"></i> <a href="https://github.com/ShanmukhJogu" target="_blank" class="hover:underline">github/ShanmukhJogu</a></span>
+      <span class="flex items-center gap-2"><i class="fab fa-linkedin text-[#38bdf8] text-2xl"></i> <a href="https://linkedin.com/in/shanmukha-sesha-sai-jogu-" target="_blank" class="hover:underline">linkedin/in/shanmukha</a></span>
+    </p>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="text-center py-6 bg-[#020617] text-[#5f7a9c] border-t border-[#1e2f47]">
+  <p>© 2026 Shanmukh — built with <i class="fas fa-heart text-[#f87171]"></i> in India (Tailwind)</p>
+</footer>
+
+<!-- scroll function -->
+<script>
+function go(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+}
+</script>
+</body>
+</html>
